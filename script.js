@@ -11,7 +11,7 @@ function startGame() {
     lost.style.display = "none";
     won.style.display = "none";
     const levelSelect = document.querySelector(".minesweeper-level");
-    // levelSelect.addEventListener("change",startGame);
+    levelSelect.addEventListener("change",startGame);
     const flags = document.querySelector(".minesweeper-flag-count");
     
     const restart = document.querySelector(".minesweeper-restart");
@@ -50,7 +50,19 @@ function startGame() {
                 box.classList.add("box","unrevealed");
                 box.addEventListener("click",revealBox);
                 box.addEventListener("contextmenu",flagBox);
-                box.setAttribute("id", `${i}-${j}`)
+                box.setAttribute("id", `${i}-${j}`);
+                if(window.screen.width<500){
+                    box.style.height = `${300/boardSize}px`;
+                    box.style.width = `${300/boardSize}px`;
+                }
+                else if(window.screen.width<600){
+                    box.style.height = `${400/boardSize}px`;
+                    box.style.width = `${400/boardSize}px`;
+                }
+                else{
+                    box.style.height = `${500/boardSize}px`;
+                    box.style.width = `${500/boardSize}px`;
+                }
                 row.append(box);
                 rowArray.push(box);
             }
