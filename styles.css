@@ -1,0 +1,195 @@
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    background-image: url("https://www.google.com/logos/fnbx/minesweeper/cta.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 255, 255, 0.714);
+    box-shadow: 0px 3px 5px rgba(255, 255, 255, 0.427);
+    border-radius: 20px;
+    width: 90%;
+    height: 90vh;
+}
+.starter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    color: white;
+    font-size: 1.2rem;
+    width: 50%;
+}
+.starter button{
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 30px;
+    color: white;
+    width: 217px;
+    box-shadow: 0px -3px 0px 1px rgba(255, 255, 255, 0.427);
+    cursor: pointer;
+}
+.starter button:hover{
+    box-shadow: 0px 3px 0px 1px rgba(255, 255, 255, 0.427);
+}
+.minesweeper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    display: none;
+}
+.minesweeper-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4A752C;
+    padding: 8px ;
+}
+.minesweeper-header select{
+    padding: 4px;
+    font-weight: 600;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+.minesweeper-flag-count{
+    color: white;
+}
+.minesweeper-restart{
+    background-color: white;
+    padding: 4px;
+    font-weight: 600;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+.minesweeper-board{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    cursor: pointer;
+    /* position: relative; */
+}
+.minesweeper-row{
+    display: flex;
+}
+.box{
+    width: 50px;
+    height: 50px;
+    /* border: 2px solid black; */
+    background-color: #BFE17D;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box.revealed{
+    background-color: #E5C29F;
+}
+.minesweeper-row:nth-child(even) .box:nth-child(odd) ,
+.minesweeper-row:nth-child(odd) .box:nth-child(even){
+    background-color: #A2D148;
+}
+
+.minesweeper-row:nth-child(even) .box:nth-child(odd).revealed ,
+.minesweeper-row:nth-child(odd) .box:nth-child(even).revealed{
+    background-color: #D7B899;
+}
+
+.flag{
+    position: relative;
+    color: transparent;
+}
+.flag::after{
+    color: #fff;
+    content: "🚩";
+    position: absolute;
+    left: 20%;
+    font-size: 1.5rem;
+}
+.mine{
+    position: relative;
+    color: transparent;
+}
+.mine::after{
+    color: #fff;
+    content: "💣";
+    position: absolute;
+    font-size: 1.5rem;
+}
+.ender{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    /* color: white; */
+    font-size: 1.2rem;
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* background-color: rgba(0, 0, 0, 0.367); */
+}
+.ender button{
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 30px;
+    /* color: white; */
+    width: 217px;
+    cursor: pointer;
+}
+.lose, .won{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+@media (max-width: 600px) {
+    .box{
+        width: 40px;
+        height: 40px;
+    }
+}
+@media (max-width: 500px) {
+    .box{
+        width: 30px;
+        height: 30px;
+    }
+    .flag::after{
+        font-size: 1rem;
+    }
+    .mine::after{
+        font-size: 1rem;
+    }
+    .starter{
+        width: 70%;
+    }
+}
